@@ -1,7 +1,7 @@
 from unique import *
 
 rs = [Int(f"r{n}") for n in range(9)]
-# -1 -> T, 0 -> E, 1 -> L
+# -1 -> Tiger, 0 -> Empty, 1 -> Lady
 
 s0 = Or([rs[i] == 1 for i in range(9) if i % 2 == 0])
 s1 = rs[1] == 0
@@ -19,8 +19,7 @@ c1 = And([And(-1 <= rs[i], rs[i] <= 1) for i in range(9)])
 c2 = Sum([If(rs[i] == 1, 1, 0) for i in range(9)]) == 1
 c3 = And([Implies(rs[i] == 1, ss[i]) for i in range(9)])
 c4 = And([Implies(rs[i] == -1, ~ss[i]) for i in range(9)])
-c5 = rs[7] == 0  # 5,3 save
-# c5 = rs[7] != 0  # 0,6,5 save
+c5 = rs[7] != 0
 
 s = Solver()
 
