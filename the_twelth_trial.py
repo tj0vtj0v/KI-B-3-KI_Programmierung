@@ -23,7 +23,7 @@ c5 = rs[7] != 0
 
 s = Solver()
 
-s.add(Or(ss))
+s.add(Or(ss + [True]))  # + [True] even tho lady s_ has to be true
 
 s.add(c1)
 s.add(c2)
