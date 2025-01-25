@@ -1,5 +1,6 @@
 from random import randint
 
+import matplotlib
 import matplotlib.pyplot as plt
 
 from unique import *
@@ -31,7 +32,7 @@ def nullsum(num: int, bound: int):
 
 
 res = {}
-reps = 200
+reps = 100
 bounds = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 70, 100, 150, 200, 300, 400, 500, 700, 1000]
 
 for bound in bounds:
@@ -42,6 +43,9 @@ for bound in bounds:
         for _ in range(1, reps + 1):
             res[bound][l] += nullsum(l, bound)
         res[bound][l] /= reps
+
+matplotlib.use('TkAgg')
+plt.ion()
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
@@ -66,4 +70,4 @@ sm = plt.cm.ScalarMappable(cmap=cmap, norm=norm)
 sm.set_array([])
 fig.colorbar(sm, ax=ax, label='Bound')
 
-plt.show()
+plt.show(block=True)

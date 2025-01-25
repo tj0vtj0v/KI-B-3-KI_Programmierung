@@ -7,6 +7,6 @@ def unique(solver, vars):
         solver.push()
         solver.add(v != m.eval(v))
         if solver.check() == sat:
-            print("other model:", solver.model())
+            print("other model:\n", solver.model())
         solver.pop()
     print("no other models")
