@@ -19,7 +19,6 @@ r11 = R == holder
 r12 = wallet == IT
 r13 = Abs(sales - U) == 1
 
-
 rules = [r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13]
 
 shirts = [black, orange, red, yellow]
@@ -28,14 +27,12 @@ gifts = [oil, holder, chain, wallet]
 deps = [accounting, IT, RD, sales]
 
 c1 = And([
-        And([
-            And(1 <= l[i], l[i] <= 4) for i in range(len(l))
-        ]) for l in [shirts, names, gifts, deps]
+    And([
+        And(1 <= l[i], l[i] <= 4) for i in range(len(l))
+    ]) for l in [shirts, names, gifts, deps]
 ])
 
 c2 = And([Distinct(l) for l in [shirts, names, gifts, deps]])
-
-
 
 s = Solver()
 
