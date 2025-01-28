@@ -20,6 +20,7 @@ c1 = And([
 
 slots = Int(f"slots")
 
+
 def max_z3(values):
     if not values:
         return None  # Handle the empty case
@@ -27,6 +28,7 @@ def max_z3(values):
     for v in values[1:]:
         max_val = If(v > max_val, v, max_val)
     return max_val
+
 
 c2 = slots == max_z3([x for x in meeting_slots])
 
